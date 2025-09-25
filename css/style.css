@@ -1,27 +1,11 @@
-/* =======================
-   THEME TOKENS (CSS vars)
-   ======================= */
 :root{
-  /* Colors and spacing you can reuse everywhere */
-  --bg:#ffffff;
-  --text:#1f2937;   /* gray-800 */
-  --muted:#6b7280;  /* gray-500 */
-  --border:#e5e7eb; /* gray-200 */
-  --card:#f9fafb;   /* gray-50 */
-
+  /* Global spacing/radius/width tokens used across the site */
   --radius:16px;
   --space-1:8px; --space-2:12px; --space-3:16px; --space-4:24px;
-  --max-w:1000px; /* site width cap */
+  --max-w:1000px;
 }
 
-/* Dark mode colors; JS will also toggle via data-theme */
-:root[data-theme="dark"]{
-  --bg:#0b0f14;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
-  --border:#111827;
-  --card:#0f1620;
-}
+/* Explicit light theme variables (set by JS via data-theme="light") */
 :root[data-theme="light"]{
   --bg:#ffffff;
   --text:#1f2937;
@@ -30,111 +14,86 @@
   --card:#f9fafb;
 }
 
-/* =====
-   BASE
-   ===== */
-*{ box-sizing:border-box; }               /* predictable sizing */
-html,body{ margin:0; }                    /* remove default browser margins */
+/* Explicit dark theme variables (set by JS via data-theme="dark") */
+:root[data-theme="dark"]{
+  --bg:#0b0f14;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --border:#111827;
+  --card:#0f1620;
+}
 
+/* Reset box model + remove default body/html margins */
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
+
+/* ---------- Header Settings ---------- */
+header{ border-bottom:1px solid var(--border); }
+header .navigation a{
+  text-decoration:none; margin-right: var(--space-3);
+}
+header h1{ margin:0; padding: var(--space-3) 0; }
+
+/* Base body typography + colors driven by theme variables */
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg); color:var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   line-height:1.6;
 }
 
+/* Headings spacing/line-height for rhythm */
 h1,h2,h3{
-  line-height:1.2;
-  margin: var(--space-4) 0 var(--space-2);
+    line-height:1.2;
+    margin: var(--space-4) 0 var(--space-2);
 }
+
+/* Paragraph spacing */
 p{ margin: var(--space-2) 0; }
+
+/* Inherit link color from text color (no default blue) */
 a{ color:inherit; }
 
-/* Reusable width + side padding */
-.container{ max-width: var(--max-w); margin:auto; padding: 0 var(--space-3); }
+/* Width container helper + side padding (applied to .container and header) */
+.container, header{ max-width: var(--max-w); margin:auto; padding: 0 var(--space-3); }
 
-/* Add vertical rhythm to sections; divider only between sections */
-section{ padding: var(--space-4) 0; }
-section + section{ border-top:1px solid var(--border); }
+/* Vertical section spacing + subtle divider */
+section{ padding: var(--space-4) 0; border-top:1px solid var(--border); }
 
-/* ============
-   HEADER & NAV
-   ============ */
-header{
-  border-bottom:1px solid var(--border);
-}
-header .navigation a{
-  text-decoration:none;
-  margin-right: var(--space-3);
-}
-header h1{
-  margin:0;
-  padding: var(--space-3) 0;
-}
-
-/* ===========================
-   PROJECTS (single-column flex)
-   =========================== */
+/* ---------- Projects (single-column list using Flexbox) ---------- */
 .projects-list{
-  display:flex;
-  flex-direction:column;  /* one column on all screens */
-  gap:16px;               /* space between cards */
-  margin:0;               /* keep inside container padding */
+  display: flex;
+  flex-direction: column; /* stack cards vertically */
+  margin: 16px;           /* outer spacing around the list */
 }
 
-/* Card wrapper: one border/background for title + text + image */
+/* Project card “box” styles (shared background/border for title+text+image) */
 .project-card{
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 16px;
 }
 
-/* Tidy inner spacing */
+/* Tighter inner spacing for card contents */
 .project-card h3{ margin: 0 0 8px; }
 .project-card p{ margin: 0; }
-.project-card img{
-  margin-top: 12px;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
+.project-card img{ margin-top: 12px; max-width: 100%; height: auto; display: block; border-radius: 8px;}
 
-/* ===============
-   CONTACT (stacked)
-   =============== */
+/* ---------- Contact form (stacked vertical layout) ---------- */
 #contact form{
-  max-width:640px;               /* readable line length */
-  display:flex;
-  flex-direction:column;
-  gap: var(--space-2);
+  max-width:640px;
+  display:flex; flex-direction:column; gap: var(--space-2);
 }
 #contact label{ font-weight:600; }
 #contact input, #contact textarea{
-  padding:10px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  background: var(--bg);
-  color: var(--text);
+  padding:10px; border:1px solid var(--border); border-radius:8px;
 }
 #contact button{
   margin-top: var(--space-2);
-  padding:10px 14px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  background: var(--text);   /* inverted button for contrast */
-  color: var(--bg);
-  cursor:pointer;
+  padding:10px 14px; border:1px solid var(--border); border-radius:8px;
+  background: var(--text); color: var(--bg); cursor:pointer;
 }
 #contact button:hover{ opacity:.95; }
 
-/* ======
-   FOOTER
-   ====== */
-footer{
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  text-align:center;
-  padding: var(--space-3) 0;
-}
+/* ---------- Footer ---------- */
+footer{ border-top:1px solid var(--border); color:var(--muted); text-align:center; padding: var(--space-3) 0; }

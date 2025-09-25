@@ -67,8 +67,7 @@ For detailed technical information about the project architecture, code structur
 
 ## 🌐 Live Demo
 
-*Optional: Add your GitHub Pages / Netlify / Vercel link here.*  
-Example: [View on GitHub Pages](#)
+On: https://stellar-platypus-799482.netlify.app/#projects
 
 ---
 
