@@ -54,14 +54,7 @@ p{ margin: var(--space-2) 0; }
 a{ color:inherit; }
 
 /* Width container helper + side padding (applied to .container and header) */
-/* Left-align the layout instead of centering */
-.container, header {
-  max-width: var(--max-w);
-  margin-left: 0;      /* stick to the left edge */
-  margin-right: auto;  /* push extra space to the right */
-  padding-left: 0;     /* or var(--space-1) for a little breathing room */
-  padding-right: var(--space-3);
-}
+.container, header{ max-width: var(--max-w); margin:auto; padding: 0 var(--space-3); }
 
 /* Vertical section spacing + subtle divider */
 section{ padding: var(--space-4) 0; border-top:1px solid var(--border); }
