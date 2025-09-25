@@ -24,7 +24,7 @@ It demonstrates HTML, CSS, and JavaScript fundamentals, along with **AI-assisted
 
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/<your-username>/assignment-1.git
+   git clone https://github.com/Rayan-Alamri/assignment-1.git
    cd assignment-1
    ```
 
