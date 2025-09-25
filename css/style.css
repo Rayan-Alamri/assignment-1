@@ -62,8 +62,11 @@ section{ padding: var(--space-4) 0; border-top:1px solid var(--border); }
 /* ---------- Projects (single-column list using Flexbox) ---------- */
 .projects-list{
   display: flex;
-  flex-direction: column; /* stack cards vertically */
-  margin: 16px;           /* outer spacing around the list */
+  flex-direction: column;
+  gap: 16px;     /* space between cards */
+  margin: 0;     /* remove outer offset so it aligns with the heading */
+  /* optional: add a little top spacing if you want separation from the H2 */
+  /* margin-top: 8px; */
 }
 
 /* Project card “box” styles (shared background/border for title+text+image) */
