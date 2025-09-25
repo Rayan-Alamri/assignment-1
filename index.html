@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta for UTF-8 and responsive layouts -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Portfolio</title>
+
+  <!-- Main stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <!-- JS for smooth scrolling + dark mode toggle (defer = run after HTML parsed) -->
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- Site header with primary navigation -->
+  <header>
+    <h1>Rayan Alamri</h1>
+
+    <!-- aria-label helps assistive tech identify this nav -->
+    <nav class="navigation" aria-label="Primary">
+      <!-- In-page links jump to section IDs -->
+      <a href="#about">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+
+      <!-- Theme toggle (handled by JS), aria-pressed reflects current state -->
+      <button id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">🌓</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ABOUT: section landmark with container width helper -->
+    <section id="about" class="container">
+      <h2>About Me</h2>
+      <!-- Regular paragraph (not a heading) for body copy -->
+      <p>
+        I'm Rayan Alamri, a CS student at KFUPM. I enjoy turning small ideas into working
+        prototypes and refining them with feedback. Lately I’ve been exploring web
+        development and automation to solve everyday problems.
+      </p>
+    </section>
+
+    <!-- PROJECTS: one container, then a list of cards -->
+    <section id="projects" class="container">
+      <h2>Projects</h2>
+
+      <!-- Use a single list wrapper; each project is a card -->
+      <div class="projects-list">
+        <article class="project-card">
+          <h3>MIPS CPU in Logisim</h3>
+          <p>
+            Built a simple single-cycle CPU in Logisim to execute a small subset of MIPS-style
+            instructions (add, sub, lw, sw, beq). Designed the datapath and control unit, then
+            verified behavior with test programs in the MARS simulator.
+          </p>
+          <!-- Placeholder image (replace later with real screenshot) -->
+          <img src="assets/placeHolder.jpg" alt="Mars CPU project placeholder image" />
+        </article>
+
+        <article class="project-card">
+          <h3>University League Organizer (Website)</h3>
+          <p>
+            A lightweight website to register teams, generate fixtures, and track standings for
+            the university league. Focused on a clean, mobile-first UI and simple interactions
+            for organizers and players.
+          </p>
+          <img src="assets/placeHolder.jpg" alt="League organizer site placeholder image" />
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT: accessible labels + required fields; no backend -->
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+      <form>
+        <!-- label[for] must match input[id] for accessibility -->
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">Email:</label>
+        <!-- type="email" gives built-in validation -->
+        <input id="email" name="email" type="email" required />
+
+        <label for="message">Message:</label>
+        <!-- textarea for multi-line message -->
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <!-- No action attribute = no network request; JS can show a status later -->
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Page footer (outside main for proper landmarks) -->
+  <footer>
+    <p>
+      <small>© <span id="year"></span> Rayan Alamri. All rights reserved.</small>
+    </p>
+  </footer>
+</body>
+</html>
